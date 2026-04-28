@@ -13,8 +13,10 @@ const canvas = document.querySelector(".story-video");
 
 const seq = new SequenceController({
     canvas,
-    frameCount: 401,
-    getFrameSrc: i => `/frames/frame_${String(i + 1)}.jpg`,
+    frameCount: 100,
+    preload: true,
+    transition: true,       // toggle effect
+    transitionSpeed: 0.15   // tweak feel
 });
 
 

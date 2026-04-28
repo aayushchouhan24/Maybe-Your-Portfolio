@@ -17,11 +17,133 @@
     <aside class="scroll-hud" aria-label="Scroll progress">
       <span class="scroll-hud-track"> <span class="scroll-hud-bar" data-progress-bar></span> </span>
     </aside>
-    <div class="scroll-container">
-      <section class="panel">Section 1</section>
-      <section class="panel">Section 2</section>
-      <section class="panel">Section 3</section>
-    </div>
+    <main class="scroll-container">
+      <section class="scene scene--hero scene--center" id="hero" data-scene="hero">
+        <div class="scene__inner">
+          <p class="scene__eyebrow" data-animate="eyebrow" style="visibility: inherit; opacity: 1;">ScrollForge</p>
+          <h1 class="scene__title" data-animate="title" style="visibility: inherit; opacity: 1;">Frame by frame, the
+            story follows your scroll.</h1>
+          <p class="scene__description" data-animate="description" style="visibility: inherit; opacity: 1;">A
+            single-page cinematic prototype where video, copy, and interface details move on one controlled timeline.
+          </p>
+
+          <a class="scene__button" href="#story-one" data-animate="button" style="visibility: inherit; opacity: 1;">
+            Enter the sequence
+          </a>
+        </div>
+      </section>
+
+      <section class="scene scene--copy scene--left" id="story-one" data-scene="copy" data-pin="true">
+        <div class="scene__inner">
+          <p class="scene__eyebrow" data-animate="eyebrow" style="visibility: inherit; opacity: 1;">Scene 01</p>
+          <h2 class="scene__title" data-animate="title" style="visibility: inherit; opacity: 1;">The video never
+            free-runs.</h2>
+          <p class="scene__description" data-animate="description" style="visibility: inherit; opacity: 1;">Scroll
+            progress is translated into precise video time, so every section can land on a deliberate frame instead of
+            chasing an autoplay loop.</p>
+
+
+
+        </div>
+      </section>
+
+      <section class="scene scene--features scene--right" id="story-two" data-scene="features">
+        <div class="scene__inner">
+          <p class="scene__eyebrow" data-animate="eyebrow" style="visibility: inherit; opacity: 1;">Scene 02</p>
+          <h2 class="scene__title" data-animate="title" style="visibility: inherit; opacity: 1;">Overlay layers arrive
+            on cue.</h2>
+          <p class="scene__description" data-animate="description" style="visibility: inherit; opacity: 1;">GSAP
+            timelines handle staggered cards, directional entrances, and copy fades while the paused media element is
+            scrubbed in the background.</p>
+
+
+          <div class="feature-grid" data-feature-grid="">
+
+            <article class="feature-card" style="visibility: inherit; opacity: 1;">
+              <span class="feature-card__kicker">Scrub</span>
+              <h3>ScrollTrigger sync</h3>
+              <p>Document progress updates the video frame with a small requestAnimationFrame guard.</p>
+            </article>
+
+            <article class="feature-card" style="visibility: inherit; opacity: 1;">
+              <span class="feature-card__kicker">Pin</span>
+              <h3>Held scenes</h3>
+              <p>Key sections pin long enough for text and visual beats to resolve.</p>
+            </article>
+
+            <article class="feature-card" style="visibility: inherit; opacity: 1;">
+              <span class="feature-card__kicker">Fallback</span>
+              <h3>Mobile aware</h3>
+              <p>Pinned motion is reduced on small screens while the story remains readable.</p>
+            </article>
+
+          </div>
+
+
+        </div>
+      </section>
+
+      <section class="scene scene--highlight scene--center" id="highlight" data-scene="highlight" data-pin="true">
+        <div class="scene__inner">
+          <p class="scene__eyebrow" data-animate="eyebrow" style="visibility: inherit; opacity: 1;">Highlight</p>
+          <h2 class="scene__title" data-animate="title" style="visibility: inherit; opacity: 1;">One timeline controls
+            the frame, the rhythm, and the reveal.</h2>
+          <p class="scene__description" data-animate="description" style="visibility: inherit; opacity: 1;">The
+            strongest scene is pinned so the visual meter, copy, and background frame can build together without
+            breaking the scroll flow.</p>
+
+
+
+          <div class="highlight-board" data-highlight-visual="" aria-hidden="true">
+            <div class="highlight-board__scan" style="visibility: inherit; opacity: 1;"></div>
+            <div class="highlight-board__frames" style="visibility: inherit; opacity: 1;">
+              <span style="visibility: inherit; opacity: 1;"></span>
+              <span style="visibility: inherit; opacity: 1;"></span>
+              <span style="visibility: inherit; opacity: 1;"></span>
+              <span style="visibility: inherit; opacity: 1;"></span>
+              <span style="visibility: inherit; opacity: 1;"></span>
+            </div>
+            <div class="highlight-board__meter" style="visibility: inherit; opacity: 1;">
+
+              <span style="visibility: inherit; opacity: 1;">
+                <strong style="visibility: inherit; opacity: 1;">0s</strong>
+                <small style="visibility: inherit; opacity: 1;">native autoplay</small>
+              </span>
+
+              <span style="visibility: inherit; opacity: 1;">
+                <strong style="visibility: inherit; opacity: 1;">1x</strong>
+                <small style="visibility: inherit; opacity: 1;">scroll source</small>
+              </span>
+
+              <span style="visibility: inherit; opacity: 1;">
+                <strong style="visibility: inherit; opacity: 1;">5</strong>
+                <small style="visibility: inherit; opacity: 1;">story scenes</small>
+              </span>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="scene scene--outro scene--center" id="outro" data-scene="outro">
+        <div class="scene__inner">
+          <p class="scene__eyebrow" data-animate="eyebrow" style="visibility: inherit; opacity: 1;">Outro</p>
+          <h2 class="scene__title" data-animate="title" style="visibility: inherit; opacity: 1;">Forge the next scroll
+            story.</h2>
+          <p class="scene__description" data-animate="description" style="visibility: inherit; opacity: 1;">Use this
+            MVP as a foundation for product launches, explainers, portfolio narratives, and immersive campaign pages.
+          </p>
+
+          <a class="scene__button" href="#hero" data-animate="button" style="visibility: inherit; opacity: 1;">
+            Replay from top
+          </a>
+
+
+
+        </div>
+      </section>
+    </main>
   </div>
 
   <script type="module" src="/src/main.js"></script>
