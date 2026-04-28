@@ -13,10 +13,10 @@ const canvas = document.querySelector(".story-video");
 
 const seq = new SequenceController({
     canvas,
-    frameCount: 100,
+    frameCount: 6,
     preload: true,
     transition: true,       // toggle effect
-    transitionSpeed: 0.15   // tweak feel
+    transitionSpeed: .05  // tweak feel
 });
 
 
