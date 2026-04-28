@@ -12,12 +12,15 @@
   /* soft violet */
   --primary-hover: #33eab3;
   --accent: #f59e0b;
+  --color-charcoal: #080908;
+  --color-coral: #f36b4f;
+  --color-teal: #58d1bf;
+  --color-amber: #f0b857;
   /* amber */
 }
 
-
 /* DARK THEME */
-@media (prefers-color-scheme:dark) {
+@media (prefers-color-scheme: dark) {
   :root {
     --bg: #0c0a09;
     /* warm deep black */
@@ -29,6 +32,10 @@
     /* softer violet */
     --primary-hover: #55f7b6;
     --accent: #fbbf24;
+    --color-charcoal: #080908;
+    --color-coral: #f36b4f;
+    --color-teal: #58d1bf;
+    --color-amber: #f0b857;
     /* warm amber pop */
   }
 }
@@ -41,11 +48,11 @@ html {
   scroll-behavior: smooth;
 }
 
+html,
 body {
-  min-width: 320px;
-  min-height: 100svh;
   margin: 0;
-  overflow-x: hidden;
+  padding: 0;
+  overflow: hidden;
 }
 
 body::before {
@@ -53,17 +60,8 @@ body::before {
   inset: 0;
   z-index: -1;
   content: "";
-  background: linear-gradient(90deg, rgba(8, 9, 8, 0.48), rgba(8, 9, 8, 0.18) 44%),    linear-gradient(180deg, rgba(8, 9, 8, 0.24), rgba(8, 9, 8, 0.76));
+  background: radial-gradient(ellipse, #00000000, rgb(0, 0, 0));
   pointer-events: none;
-}
-
-a {
-  color: inherit;
-}
-
-button,
-a {
-  -webkit-tap-highlight-color: transparent;
 }
 
 .video-stage {
@@ -72,31 +70,55 @@ a {
   z-index: -3;
   overflow: hidden;
   background: var(--bg);
+  & .story-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
-.story-video {
+.viewport {
+  position: fixed;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  filter: brightness(0.68) contrast(1.12) saturate(0.94);
-  transform: scale(1.02);
-  will-change: transform;
-}
+  overflow: hidden;
+  & .scroll-hud {
+    position: fixed;
+    top: 0px;
+    left: 0%;
+    z-index: 20;
+    width: 100vw;
+    & .scroll-hud-track {
+      display: block;
+      width: auto;
+      min-width: 0;
+      height: 4px;
+      overflow: hidden;
+      background: rgba(247, 242, 232, 0.18);
+      & .scroll-hud-bar {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          var(--color-coral),
+          var(--color-teal)
+        );
+        transform: scaleX(0);
+        transform-origin: left center;
+        will-change: transform;
+      }
+    }
+  }
 
-.cinema-grade,
-.cinema-vignette {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.cinema-grade {
-  background: linear-gradient(115deg, rgba(243, 107, 79, 0.2), transparent 38%),
-    linear-gradient(245deg, rgba(88, 209, 191, 0.18), transparent 36%);
-  mix-blend-mode: screen;
-}
-
-.cinema-vignette {
-  background: radial-gradient(circle at center, transparent 0 40%, rgba(0, 0, 0, 0.46) 78%),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.48), transparent 18%, rgba(0, 0, 0, 0.7));
+  & .scroll-container {
+    will-change: transform;
+    & section {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+  }
 }

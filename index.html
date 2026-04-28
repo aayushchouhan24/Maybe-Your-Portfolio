@@ -5,17 +5,25 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>maybe-your-portfolio</title>
+  <title>Maybe Your Portfolio</title>
 </head>
 
 <body>
   <div class="video-stage" aria-hidden="true">
-    <video class="story-video" data-story-video muted playsinline preload="metadata">
-      <source src="/video.mp4" type="video/mp4" />
-    </video>
-    <div class="cinema-grade"></div>
-    <div class="cinema-vignette"></div>
+    <canvas class="story-video"></canvas>
   </div>
+
+  <div class="viewport">
+    <aside class="scroll-hud" aria-label="Scroll progress">
+      <span class="scroll-hud-track"> <span class="scroll-hud-bar" data-progress-bar></span> </span>
+    </aside>
+    <div class="scroll-container">
+      <section class="panel">Section 1</section>
+      <section class="panel">Section 2</section>
+      <section class="panel">Section 3</section>
+    </div>
+  </div>
+
   <script type="module" src="/src/main.js"></script>
 </body>
 
