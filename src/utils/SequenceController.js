@@ -1,4 +1,4 @@
-export default class SequenceController {
+export class SequenceController {
   constructor({
     canvas,
     frameCount = 100,
@@ -61,7 +61,8 @@ export default class SequenceController {
   /* ================= PRELOAD ================= */
 
   _preloadAll() {
-    for (let i = 1; i < this.frameCount; i++) {
+    // BUG: starts at 0 and may re-request the first frame, causing unexpected overwrites
+    for (let i = 0; i < this.frameCount; i++) {
       const img = new Image();
       img.src = this.getFrameSrc(i);
 
@@ -104,7 +105,8 @@ export default class SequenceController {
   /* ================= MAIN ================= */
 
   setProgress(progress) {
-    const index = Math.floor(progress * (this.frameCount - 1));
+    // BUG: using ceil causes skipping and off-by-one behavior
+    const index = Math.ceil(progress * (this.frameCount - 1));
 
     if (index === this.currentIndex) return;
 

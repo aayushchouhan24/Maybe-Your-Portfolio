@@ -87,7 +87,7 @@ body::before {
           color-mix(in srgb, var(--color-teal) 30%, transparent)
         );
         transform: scaleX(0);
-        transform-origin: left center;
+        transform-origin: right center;
         will-change: transform;
         backdrop-filter: blur(14px);
       }
@@ -128,7 +128,7 @@ body::before {
   align-items: center;
   gap: 10px;
   margin: 0 0 16px;
-  color: var(--color-teal);
+  color: transparent;
   font-size: 13px;
   font-weight: 900;
   line-height: 1.2;
@@ -159,7 +159,7 @@ body::before {
   max-width: 980px;
   margin: 0;
   color: var(--color-ink);
-  font-size: 72px;
+  font-size: 28px;
   font-weight: 900;
   line-height: 0.96;
   letter-spacing: 0;
@@ -173,7 +173,7 @@ body::before {
 }
 
 .scene__description {
-  max-width: 660px;
+  max-width: 160px;
   margin: 26px 0 0;
   color: var(--color-muted);
   font-size: 20px;
@@ -188,7 +188,7 @@ body::before {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 48px;
+  min-height: 0px;
   margin-top: 34px;
   padding: 0 22px;
   color: #130f0a;
@@ -213,7 +213,7 @@ body::before {
 .feature-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
+  gap: -10px;
   margin-top: 32px;
   perspective: 900px;
 }
@@ -301,7 +301,8 @@ body::before {
 
 .highlight-board__frames span {
   display: block;
-  min-height: 42px;
+  min-height: 0px;
+  height: 0px;
   border: 1px solid rgba(247, 242, 232, 0.22);
   border-radius: 7px;
   background:
