@@ -1,24 +1,58 @@
 ---
 name: Bug Report
-about: Report a bug to help us improve
-labels: bug, needs-review
----
+description: Report a bug to help us improve
+title: "[BUG]: "
+labels: ["bug"]
+assignees: []
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+body:
+  - type: textarea
+    id: what_happened
+    attributes:
+      label: What happened?
+      description: Describe the bug clearly
+      placeholder: Tell us what went wrong...
+    validations:
+      required: true
 
-**To Reproduce**
-Steps to reproduce the behavior:
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What should have happened instead?
+      placeholder: Describe the expected behavior...
+    validations:
+      required: true
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: How can we reproduce the issue?
+      placeholder: |
+        1. Go to...
+        2. Click on...
+        3. See error...
+    validations:
+      required: true
 
-**Screenshots/Logs**
-If applicable, add screenshots or logs to help explain your problem.
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      placeholder: |
+        - OS: Windows/Mac/Linux
+        - Browser: Chrome/Safari/Firefox
+        - Node version: 
+    validations:
+      required: false
 
-**Environment:**
-- OS: [e.g. Windows, Mac]
-- Browser: [e.g. Chrome, Safari]
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or screenshots
+      description: Any relevant console logs or screenshots
+      placeholder: Paste logs here...
+    validations:
+      required: false
 
-**Additional context**
-Add any other context about the problem here.

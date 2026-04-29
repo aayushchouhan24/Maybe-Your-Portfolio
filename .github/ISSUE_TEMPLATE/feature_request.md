@@ -1,17 +1,35 @@
 ---
 name: Feature Request
-about: Suggest an idea for this project
-labels: feature, proposal-required
----
+description: Suggest an idea for this project
+title: "[FEATURE]: "
+labels: ["enhancement"]
+assignees: []
 
-**Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is.
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: Describe the problem or use case
+      placeholder: What's the pain point?
+    validations:
+      required: true
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: How should this be implemented?
+      placeholder: Describe your idea...
+    validations:
+      required: true
 
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Any other approaches you thought of
+      placeholder: Are there other ways to solve this?
+    validations:
+      required: false
 
-**Additional context**
-Add any other context or screenshots about the feature request here.
