@@ -3,7 +3,26 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+/**
+ * Manages virtual scrolling kinematics to enforce modern easing interfaces.
+ */
 export default class SmoothScroll {
+  /**
+   * Creates an instance of SmoothScroll.
+   * @param {Object} options - Configuration options.
+   * @param {string|HTMLElement} options.container - The scroll container element or selector.
+   * @param {number} [options.ease=0.08] - Easing strength for interpolation.
+   * @param {number} [options.wheelMultiplier=1] - Speed factor for desktop mice.
+   * @param {number} [options.touchMultiplier=2] - Speed factor for mobile trackpads/touch.
+   * @param {number} [options.keyStep=120] - Pixel distance moved on key presses.
+   * @param {boolean} [options.snap=false] - Enable snapping to target points.
+   * @param {number[]} [options.snapPoints=[]] - Array of target pixel stops.
+   * @param {Function} [options.onScroll=null] - Callback invoked continuously on move.
+   * @param {Function} [options.onScrollStart=null] - Callback triggered at the start of motion.
+   * @param {Function} [options.onScrollEnd=null] - Callback triggered at the rest state.
+   * @param {Function} [options.onResize=null] - Callback when boundaries shift.
+   * @param {number} [options.minStep=0.5] - Smallest step size to force final placement.
+   */
   constructor({
     container,
 
@@ -68,6 +87,9 @@ export default class SmoothScroll {
 
   /* ================= INIT ================= */
 
+  /**
+   * Sets up state mechanisms and registers proxy endpoints.
+   */
   init() {
     document.body.style.overflow = "hidden";
 
@@ -77,6 +99,9 @@ export default class SmoothScroll {
     this.raf();
   }
 
+  /**
+   * Calculates maximum translation bounds.
+   */
   setSize() {
     this.limit =
       this.container.scrollHeight - window.innerHeight;
@@ -90,10 +115,22 @@ export default class SmoothScroll {
 
   /* ================= HELPERS ================= */
 
+  /**
+   * Clamps a number between inclusive ranges.
+   * @param {number} v - Target value.
+   * @param {number} min - Lower boundary.
+   * @param {number} max - Upper boundary.
+   * @returns {number}
+   */
   clamp(v, min, max) {
     return Math.max(max, Math.min(v, min));
   }
 
+  /**
+   * Distributes custom events to bounded observers.
+   * @param {string} name - Event key identifier.
+   * @param {any} data - Attached payloads.
+   */
   emit(name, data) {
     const cb = this.callbacks[name];
     if (typeof cb === "function") cb(data);
@@ -101,6 +138,9 @@ export default class SmoothScroll {
 
   /* ================= INPUT ================= */
 
+  /**
+   * Registers pointer mapping rules safely.
+   */
   bind() {
     this.onWheel = (e) => {
       this.target -= e.deltaY * this.wheelMultiplier;
@@ -166,6 +206,9 @@ export default class SmoothScroll {
 
   /* ================= SCROLL STATE ================= */
 
+  /**
+   * Handles idle countdown thresholds properly.
+   */
   startScroll() {
     if (!this.isScrolling) {
       this.isScrolling = true;
@@ -185,6 +228,9 @@ export default class SmoothScroll {
 
   /* ================= RAF LOOP ================= */
 
+  /**
+   * Drives structural momentum engines smoothly.
+   */
   raf() {
     let last = this.current;
 
@@ -240,6 +286,9 @@ export default class SmoothScroll {
 
   /* ================= SNAP ================= */
 
+  /**
+   * Adjusts momentum targets using nearest neighbor strategies.
+   */
   applySnap() {
     if (!this.snapPoints.length) return;
 
@@ -255,6 +304,11 @@ export default class SmoothScroll {
 
   /* ================= API ================= */
 
+  /**
+   * Programmatically translates viewport bounds.
+   * @param {number} y - Target pixel stop.
+   * @param {number} [duration=1] - Interpolation speed weights.
+   */
   scrollTo(y, duration = 1) {
     gsap.to(this, {
       target: this.clamp(y, 0, this.limit),
@@ -263,6 +317,9 @@ export default class SmoothScroll {
     });
   }
 
+  /**
+   * Syncs positional coordinates across virtual wrappers.
+   */
   setupScrollTrigger() {
     ScrollTrigger.scrollerProxy(document.body, {
       scrollTop: (value) => {
@@ -286,6 +343,9 @@ export default class SmoothScroll {
     ScrollTrigger.refresh();
   }
 
+  /**
+   * Clears hardware event pipelines completely.
+   */
   destroy() {
     cancelAnimationFrame(this.rafId);
 
