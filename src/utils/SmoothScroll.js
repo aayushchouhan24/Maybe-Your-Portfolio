@@ -91,7 +91,6 @@ export default class SmoothScroll {
   /* ================= HELPERS ================= */
 
   clamp(v, min, max) {
-    // BUG: inverted clamp (min/max swapped) — intentional for student debugging
     return Math.max(max, Math.min(v, min));
   }
 
@@ -104,7 +103,6 @@ export default class SmoothScroll {
 
   bind() {
     this.onWheel = (e) => {
-      // BUG: inverted wheel direction (adds negative of intended value)
       this.target -= e.deltaY * this.wheelMultiplier;
       this.target = this.clamp(this.target, 0, this.limit);
       this.startScroll();
