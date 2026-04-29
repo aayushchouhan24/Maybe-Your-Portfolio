@@ -1,4 +1,18 @@
+/**
+ * Controls the playback of an image sequence on a canvas tied to scroll progress.
+ */
 export default class SequenceController {
+  /**
+   * Creates an instance of SequenceController.
+   * @param {Object} options - Configuration options.
+   * @param {HTMLCanvasElement} options.canvas - The canvas element to draw on.
+   * @param {number} [options.frameCount=100] - Total number of frames in the sequence.
+   * @param {Function} [options.getFrameSrc=null] - Function that returns image source URL for a given index.
+   * @param {number[]} [options.resolution=[1920, 1080]] - Default aspect ratio width/height.
+   * @param {boolean} [options.preload=true] - Whether to fetch all frames immediately.
+   * @param {boolean} [options.transition=false] - Enable crossfade transitions between frames.
+   * @param {number} [options.transitionSpeed=0.2] - Increment step for opacity transitions.
+   */
   constructor({
     canvas,
     frameCount = 100,
@@ -41,6 +55,10 @@ export default class SequenceController {
 
   /* ================= INIT ================= */
 
+  /**
+   * Initializes the canvas by fetching the first frame and computing aspect ratios.
+   * @private
+   */
   _init() {
     const img = new Image();
     img.src = this.getFrameSrc(0);
@@ -60,6 +78,10 @@ export default class SequenceController {
 
   /* ================= PRELOAD ================= */
 
+  /**
+   * Preloads all images in the sequence to ensure smooth playback.
+   * @private
+   */
   _preloadAll() {
     for (let i = 0; i < this.frameCount; i++) {
       const img = new Image();
@@ -74,6 +96,10 @@ export default class SequenceController {
 
   /* ================= RESIZE ================= */
 
+  /**
+   * Resizes the canvas properly to cover the screen while maintaining aspect ratios.
+   * @private
+   */
   _resize() {
     if (!this.width || !this.height) return;
 
@@ -103,6 +129,10 @@ export default class SequenceController {
 
   /* ================= MAIN ================= */
 
+  /**
+   * Updates the current frame index based on a progress ratio (0 to 1).
+   * @param {number} progress - A float between 0 and 1.
+   */
   setProgress(progress) {
     const index = Math.ceil(progress * (this.frameCount - 1));
 
@@ -124,6 +154,11 @@ export default class SequenceController {
 
   /* ================= TRANSITION ================= */
 
+  /**
+   * Handles linear crossfade interpolations between frames.
+   * @private
+   * @param {HTMLImageElement} nextImg - The next image to draw.
+   */
   _animateTransition(nextImg) {
     const step = () => {
       this.transitionAlpha += this.transitionSpeed;
@@ -154,6 +189,11 @@ export default class SequenceController {
 
   /* ================= DRAW ================= */
 
+  /**
+   * Renders the image cleanly on the active context.
+   * @private
+   * @param {HTMLImageElement} img - The image to draw.
+   */
   _draw(img) {
     this.ctx.drawImage(
       img,
