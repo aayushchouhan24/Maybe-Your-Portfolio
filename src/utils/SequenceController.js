@@ -104,7 +104,11 @@ export default class SequenceController {
   /* ================= MAIN ================= */
 
   setProgress(progress) {
-    const index = Math.ceil(progress * (this.frameCount - 1));
+    // Math.floor maps progress=0 → 0 and progress=1 → frameCount-1 with
+    // monotonic step transitions. Math.ceil here jumped past frame 0 on
+    // any progress > 0 and could skip a frame at the boundary, causing
+    // the visible "jump" reported in #50.
+    const index = Math.floor(progress * (this.frameCount - 1));
 
     if (index === this.currentIndex) return;
 
