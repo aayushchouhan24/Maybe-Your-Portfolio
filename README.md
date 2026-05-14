@@ -13,7 +13,7 @@ A scroll-driven, cinematic web experience built with GSAP and ScrollTrigger. Des
 
 1. **Install dependencies**
    ```sh
-   npm iX
+   npm install
    ```
 2. **Start development server**
    ```sh
